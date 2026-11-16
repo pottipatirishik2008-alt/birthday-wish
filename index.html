@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#180022">
+<title>Happy 18th Birthday HNSS ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #180022;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.screen {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 20px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 30%, #64105e 0%, transparent 55%),
+      linear-gradient(145deg, #180022, #310044, #190027);
+}
+
+.screen::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(255,190,220,.15);
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.content {
+    max-width: 650px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #f7a8d0;
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+.opening-title {
+    font-size: clamp(2.6rem, 9vw, 5rem);
+    line-height: 1.2;
+    margin-bottom: 22px;
+}
+
+.pink {
+    color: #ff9acb;
+    font-style: italic;
+}
+
+.description {
+    color: #e9c9e0;
+    line-height: 1.8;
+    font-size: 15px;
+    margin-bottom: 35px;
+}
+
+button {
+    border: 1px solid #ffadd2;
+    background: linear-gradient(135deg, #ff72b5, #c43891);
+    color: white;
+    border-radius: 50px;
+    padding: 16px 30px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 8px 30px #f04a9b44;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.04);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.big-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(8rem, 32vw, 15rem);
+    line-height: 1;
+    color: #ff9bc9;
+    text-shadow: 0 0 40px #ff65ad77;
+    animation: numberGlow 2s infinite alternate;
+}
+
+.birthday-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    margin: 15px 0;
+}
+
+.cake {
+    font-size: 85px;
+    margin: 20px 0;
+    animation: bounce 2s infinite;
+}
+
+.card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,190,220,.2);
+    backdrop-filter: blur(15px);
+    border-radius: 24px;
+    padding: 32px 25px;
+    margin: 25px auto;
+    text-align: center;
+    box-shadow: 0 15px 50px #0003;
+}
+
+.card h2 {
+    color: #ffacd1;
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+.card p {
+    color: #f8e4f1;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.signature {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 23px;
+    color: #ffacd1;
+    margin-top: 25px;
+}
+
+.divider {
+    width: 65px;
+    height: 2px;
+    background: #ff9acb;
+    margin: 25px auto;
+}
+
+.footer {
+    margin-top: 30px;
+    color: #d8a7ca;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.heart {
+    position: fixed;
+    bottom: -40px;
+    pointer-events: none;
+    z-index: 3;
+    animation: floatUp linear forwards;
+    opacity: .7;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes numberGlow {
+    to { text-shadow: 0 0 65px #ff65ad; }
+}
+
+@media(max-width: 480px) {
+    .card { padding: 27px 19px; }
+    .card p { font-size: 13px; }
+    .eyebrow { letter-spacing: 3px; }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<!-- OPENING SCREEN -->
+<section class="screen" id="openingScreen">
+    <div class="content">
+
+        <p class="eyebrow">A little surprise awaits you</p>
+
+        <h1 class="opening-title">
+            Someone special<br>
+            is turning <span class="pink">18...</span>
+        </h1>
+
+        <p class="description">
+            A day as beautiful as the person celebrating it.
+            <br>
+            This little surprise was made with lots of love.
+        </p>
+
+        <button onclick="openSurprise()">
+            OPEN YOUR SURPRISE 🎁
+        </button>
+
+        <div class="footer">
+            MADE ESPECIALLY FOR HNSS ❤️
+        </div>
+    </div>
+</section>
+
+
+<!-- BIRTHDAY REVEAL -->
+<section class="screen hidden" id="mainScreen">
+    <div class="content">
+
+        <p class="eyebrow">Today is your day, beautiful</p>
+
+        <div class="big-number">18</div>
+
+        <h1 class="birthday-title">
+            Happy Birthday,<br>
+            <span class="pink">HNSS!</span> ❤️
+        </h1>
+
+        <div class="cake">🎂</div>
+
+        <p class="description">
+            18 years of magic, laughter and beautiful memories.
+            <br>
+            And so many more wonderful moments waiting ahead.
+        </p>
+
+        <button onclick="showLetter()">
+            READ YOUR LETTER 💌
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PERSONALIZED LOVE LETTER -->
+<section class="screen hidden" id="letterScreen">
+    <div class="content">
+
+        <p class="eyebrow">A letter from my heart</p>
+
+        <div class="card">
+
+            <h2>To My Beautiful HNSS 💗</h2>
+
+            <div class="divider"></div>
+
+            <p>
+                Happy 18th birthday, my love!
+                ❤️
+                <br><br>
+
+                You make my life better just by being in it,
+                and every moment with you becomes a happy memory.
+                Today is the start of a new chapter for you.
+                I hope you get everything you wish for,
+                achieve all your dreams, and never lose
+                your beautiful smile.
+                <br><br>
+
+                I cannot put into words how much you mean to me,
+                but please know that having you in my life
+                makes everything special.
+                <br><br>
+
+                These past eight months have gone by so fast,
+                and we have already made so many great memories
+                together.
+                <br><br>
+
+                I cannot wait to see what the future holds
+                for us, and I am so lucky to call you mine.
+                ❤️
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="signature">
+                Forever yours. ❤️
+            </div>
+
+        </div>
+
+        <button onclick="finalSurprise()">
+            ONE LAST SURPRISE ✨
+        </button>
+
+    </div>
+</section>
+
+
+<!-- FINAL SCREEN -->
+<section class="screen hidden" id="finalScreen">
+    <div class="content">
+
+        <p class="eyebrow">And the story continues...</p>
+
+        <div style="font-size:75px; margin:20px;">
+            💗
+        </div>
+
+        <h1 class="opening-title">
+            To 18 and<br>
+            <span class="pink">forevermore.</span>
+        </h1>
+
+        <div class="divider"></div>
+
+        <p class="description">
+            Happy Birthday once again, HNSS.
+            <br><br>
+
+            May your life always be filled with reasons
+            to smile, dreams worth chasing and love
+            worth remembering.
+            <br><br>
+
+            I hope this little website makes you smile
+            as much as you make me smile.
+        </p>
+
+        <h2 style="color:#ffacd1; font-size:25px;">
+            I LOVE YOU ❤️
+        </h2>
+
+        <div class="footer">
+            MADE WITH LOVE • JUST FOR YOU
+        </div>
+
+        <button onclick="restart()">
+            EXPERIENCE IT AGAIN ↻
+        </button>
+
+    </div>
+</section>
+
+
+<script>
+
+// SCREEN TRANSITIONS
+function showScreen(id) {
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.add("hidden");
+    });
+
+    document.getElementById(id).classList.remove("hidden");
+
+    window.scrollTo(0, 0);
+}
+
+function openSurprise() {
+    showScreen("mainScreen");
+    launchConfetti(250);
+}
+
+function showLetter() {
+    showScreen("letterScreen");
+    launchConfetti(120);
+}
+
+function finalSurprise() {
+    showScreen("finalScreen");
+    launchConfetti(350);
+}
+
+function restart() {
+    showScreen("openingScreen");
+    launchConfetti(100);
+}
+
+
+// FLOATING HEARTS
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+
+    const symbols = ["❤️", "💕", "💗", "💖", "✨"];
+
+    heart.innerHTML =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 18) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(createHeart, 650);
+
+
+// CONFETTI ANIMATION
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function launchConfetti(amount) {
+
+    const colors = [
+        "#ff72b5",
+        "#ffd166",
+        "#ffffff",
+        "#c77dff",
+        "#ffacd1",
+        "#f72585"
+    ];
+
+    for (let i = 0; i < amount; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: -20 - Math.random() * 200,
+            size: Math.random() * 8 + 3,
+            speed: Math.random() * 4 + 2,
+            angle: Math.random() * 6,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360
+        });
+    }
+}
+
+function animateConfetti() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((p, index) => {
+
+        p.y += p.speed;
+        p.x += Math.sin(p.angle) * 1.5;
+        p.angle += 0.03;
+        p.rotation += 3;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+
+        if (p.y > canvas.height + 30) {
+            particles.splice(index, 1);
+        }
+    });
+
+    requestAnimationFrame(animateConfetti);
+}
+
+animateConfetti();
+
+</script>
+
+</body>
+</html>
